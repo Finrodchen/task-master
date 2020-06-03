@@ -7,7 +7,7 @@ def home():
 
 @app.route("/test")
 def test():
-    return "This is test"
+    return "This is test 2"
 
 
 if __name__=="__main__": #如果以上程式執行
