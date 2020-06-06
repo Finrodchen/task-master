@@ -1,12 +1,15 @@
 <!doctype html>
 
-<html lang="en">
+<html  lang="zh-Hant-TW">
+
 <head>
   <meta charset="utf-8">
-
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
+  <title>簡易公佈欄 by Finrodchen</title>
+  <meta name="description" content="以Flask框架製作的簡易公告欄">
+  <meta name="author" content="finrodchen.net">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+  
   {% block head %} {% endblock %}
 
 </head>
@@ -14,4 +17,9 @@
 <body>
     {% block body %} {% endblock %}
 </body>
+
+<footer>
+  <center>&copy; Copyright 2020 Powered by finrodchen.net</center>
+</footer>
+
 </html>

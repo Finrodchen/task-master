@@ -1,31 +1,36 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>簡易公佈欄 by Finrodchen</title>
+
 {% endblock %}
 
 {% block body %}
 <div class="content">
     <center>
-        <img src="https://i.imgur.com/fMrx6Bos.png" title="source: imgur.com">
+        <img src="https://imgur.com/e5esbJj.png">
     </center>
-    <h1 style="text-align: center;">簡易公佈欄</h1>
+    
+    <h2 style="text-align: center;">簡易公佈欄</h2>
     {% if tasks|length < 1 %}
-    <h2 style="text-align: center;">好棒棒！事情都做完了！</h2>
+    <h3 style="text-align: center;">事情都做完了！好棒棒！</h3>
 
+    <br>
+    
     {% else %}
     <table align="center">
         <tr>
+            <th>優先狀態</th>
             <th>清單</th>
+            <th>負責人</th>
             <th>加入時間</th>
-            <th>發佈人</th>
             <th>操作</th>
         </tr>
         {% for task in tasks %}
         <tr>
+            <td><img src="{{ task.priority }}"></td>
             <td>{{ task.content }}</td>
+            <td>{{ task.people }}</td>
             <td>{{ task.date_created.date() }}</td>
-            <td></td>
             <td>
                 <a href="/delete/{{ task.id }}">刪除</a>
                 <br>
@@ -35,10 +40,30 @@
         {% endfor %}
     </table>
     {% endif %}
+    <hr>
     <form action="/" method="POST" align="center">
-       <input type="text" name="content" id="content" placeholder="請輸入公告事項">
-       <input type="text" name="people" id="people" placeholder="請輸入發佈人名">
-       <input type="submit" value="新增">
+       <label for="content">公告事項</label><br>
+       <input type="text" name="content" id="content" placeholder="請輸入公告內容"><br><br>
+       <label for="people">負責人</label><br>
+       <input type="text" name="people" id="people" placeholder="請輸入負責人名"><br><br>
+       <input type="radio" id="ugert" name="priority" value="https://i.imgur.com/W0Frsce.png">
+       <label for="ugert">緊急</label>
+       <input type="radio" id="normal" name="priority" value="https://i.imgur.com/LLff6l2.png">
+       <label for="normal">一般</label><br><br>
+       <input type="submit" value="新增公告事項">
     </form>
+
+    <hr>
+
+    <h3 style="text-align: center;">使用說明</h3>
+    <h5>
+        1. 輸入公告事項內容及負責人，選擇事件的優先程度。<br>
+        2. 已發佈事件可使用「更新」功能修正內容。<br>
+        3. 完成的事件可使用「更新」功能變更狀態為完成。
+    </h5>
+
+    <hr>
+
+        
 </div> 
 {% endblock %}
