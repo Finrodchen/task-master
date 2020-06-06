@@ -9,6 +9,7 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     content = db.Column(db.String(200), nullable = False)
+    people = db.Column(db.String(200), nullable = False)
     completed = db.Column(db.Integer, default = 0)
     date_created = db.Column(db.DateTime, default = datetime.utcnow)
 
@@ -57,14 +58,6 @@ def update(id):
             return "Updating issue."
     else:
         return render_template('update.html', task=task)
-
-@app.route("/blog")
-def blog():
-    return render_template('blog.html')
-
-@app.route("/portfolio")
-def portfolio():
-    return render_template('portfolio.html')
 
 if __name__=="__main__": #如果以上程式執行
     app.run() #執行app
