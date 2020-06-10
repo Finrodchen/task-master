@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -9,6 +9,7 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     priority = db.Column(db.String(200), nullable = False)
+    title = db.Column(db.String(200), nullable = False)
     content = db.Column(db.String(200), nullable = False)
     people = db.Column(db.String(200), nullable = False)
     completed = db.Column(db.Integer, default = 0)
@@ -21,9 +22,10 @@ class Todo(db.Model):
 def index():
     if request.method == 'POST':
         task_priority = request.form['priority']
+        task_title = request.form['title']
         task_content = request.form['content']
         task_people = request.form['people']
-        new_task = Todo(priority=task_priority, content=task_content, people=task_people)
+        new_task = Todo(priority=task_priority, title=task_title, content=task_content, people=task_people)
 
         try:
             db.session.add(new_task)
@@ -53,6 +55,7 @@ def update(id):
 
     if request.method == "POST":
         task.priority = request.form['priority']
+        task.title = request.form['title']
         task.content = request.form['content']
         task.people = request.form['people']
 
@@ -65,4 +68,4 @@ def update(id):
         return render_template('update.html', task=task)
 
 if __name__=="__main__": #如果以上程式執行
-    app.run() #執行app
+    app.run(debug=True) #執行app

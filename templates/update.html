@@ -5,26 +5,28 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h2 style="text-align: center;">更新公告內容</h2>
+<div class="container-fluid">
+    <div class="shadow p-3 mb-5 bg-white rounded">
 
-    <hr>
+        <h2 style="text-align: center;">更新公告內容</h2>
 
     <form action="/update/{{ task.id }}" method="POST" align="center">
-       <label for="content">更新公告事項</label><br>
-       <input type="text" name="content" id="content" value="{{ task.content }}"><br><br>
-       <label for="people">更新負責人</label><br>
-       <input type="text" name="people" id="people" value="{{ task.people }}"><br><br>
-       <input type="radio" id="ugert" name="priority" value="https://i.imgur.com/W0Frsce.png" required>
-       <label for="ugert">更新狀態為"緊急"</label>
-       <input type="radio" id="normal" name="priority" value="https://i.imgur.com/LLff6l2.png">
-       <label for="normal">更新狀態為"一般"</label>
-       <input type="radio" id="finish"" name="priority" value="https://i.imgur.com/G8eyt59.png">
-       <label for="finish">更新狀態為"完成"</label><br><br>
-       <input type="submit" value="更新公告事項內容">
+        <label for="content">公告事項</label><br>
+        <input type="text" name="title"" id="title" value="{{ task.title }}"><br><br>
+        <label for="content">說明</label><br>
+        <input type="text" name="content" id="content" value="{{ task.content }}"><br><br>
+        <label for="people">更新負責人</label><br>
+        <input type="text" name="people" id="people" value="{{ task.people }}"><br><br>
+        <input type="radio" id="ugert" name="priority" value="https://i.imgur.com/W0Frsce.png" required>
+        <label for="ugert">更新狀態為"緊急"</label>
+        <input type="radio" id="normal" name="priority" value="https://i.imgur.com/LLff6l2.png">
+        <label for="normal">更新狀態為"一般"</label>
+        <input type="radio" id="finish"" name="priority" value="https://i.imgur.com/G8eyt59.png">
+        <label for="finish">更新狀態為"完成"</label><br><br>
+        <input type="submit" value="更新公告事項內容">
     </form>
     
-    <hr>
+    </div>
 
 </div>
 {% endblock %}
